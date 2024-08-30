@@ -4,61 +4,62 @@
 
 @layer base {
   :root {
-    --background: 255, 255, 255; /* RGB value for white */
-    --foreground: 40, 41, 41; /* Dark Gray */
-    --card: 255, 255, 255; /* White */
-    --card-foreground: 40, 41, 41; /* Dark Gray */
-    --popover: 255, 255, 255; /* White */
-    --popover-foreground: 40, 41, 41; /* Dark Gray */
-    --primary: 28, 31, 60; /* Dark Blue */
-    --primary-foreground: 215, 215, 255; /* Off White */
-    --secondary: 208, 208, 245; /* Light Gray */
-    --secondary-foreground: 28, 31, 60; /* Dark Blue */
-    --muted: 208, 208, 245; /* Light Gray */
-    --muted-foreground: 176, 175, 176; /* Medium Gray */
-    --accent: 208, 208, 245; /* Light Gray */
-    --accent-foreground: 28, 31, 60; /* Dark Blue */
-    --destructive: 255, 215, 122; /* Bright Red */
-    --destructive-foreground: 215, 215, 255; /* Off White */
-    --border: 180, 210, 255; /* Light Blue */
-    --input: 180, 210, 255; /* Light Blue */
-    --ring: 215, 215, 255; /* Off White */
+    --background: 255 255 255; /* RGB value for white */
+    --foreground: 20 20 20; /* Darker Gray */
+    --card: 255 255 255; /* White */
+    --card-foreground: 20 20 20; /* Darker Gray */
+    --popover: 255 255 255; /* White */
+    --popover-foreground: 20 20 20; /* Darker Gray */
+    --primary: 20 40 80; /* Darker Blue */
+    --primary-foreground: 240 240 255; /* Light Off White */
+    --secondary: 190 200 250; /* Soft Light Gray */
+    --secondary-foreground: 20 40 80; /* Darker Blue */
+    --muted: 190 200 250; /* Soft Light Gray */
+    --muted-foreground: 150 150 150; /* Medium Gray */
+    --accent: 190 200 250; /* Soft Light Gray */
+    --accent-foreground: 20 40 80; /* Darker Blue */
+    --destructive: 255 140 60; /* Darker Bright Red */
+    --destructive-foreground: 240 240 255; /* Light Off White */
+    --border: 160 190 250; /* Soft Light Blue */
+    --input: 160 190 250; /* Soft Light Blue */
+    --ring: 240 240 255; /* Light Off White */
     --radius: 0.5rem;
-}
+  }
 
-/* Dark Mode Variables */
-.dark {
-    --background: 15, 23, 42; /* Slate 900 */
-    --foreground: 241, 245, 249; /* Slate 100 */
+  /* Dark Mode Variables */
+  .dark {
+    --background: 15 23 42; /* Slate 900 */
+    --foreground: 241 245 249; /* Slate 100 */
 
-    --card: 23, 37, 84; /* Blue 950 */
-    --card-foreground: 241, 245, 249; /* Slate 100 */
+    --card: 23 37 84; /* Blue 950 */
+    --card-foreground: 241 245 249; /* Slate 100 */
 
-    --popover: 23, 37, 84; /* Blue 950 */
-    --popover-foreground: 241, 245, 249; /* Slate 100 */
+    --popover: 23 37 84; /* Blue 950 */
+    --popover-foreground: 241 245 249; /* Slate 100 */
 
-    --primary: 37, 99, 235; /* Blue 600 */
-    --primary-foreground: 241, 245, 249; /* Slate 100 */
+    --primary: 37 99 235; /* Blue 600 */
+    --primary-foreground: 241 245 249; /* Slate 100 */
 
-    --secondary: 147, 197, 253; /* Blue 300 */
-    --secondary-foreground: 15, 23, 42; /* Slate 900 */
+    --secondary: 147 197 253; /* Blue 300 */
+    --secondary-foreground: 15 23 42; /* Slate 900 */
 
-    --muted: 51, 65, 85; /* Slate 700 */
-    --muted-foreground: 148, 163, 184; /* Slate 400 */
+    --muted: 51 65 85; /* Slate 700 */
+    --muted-foreground: 148 163 184; /* Slate 400 */
 
-    --accent: 147, 197, 253; /* Blue 300 */
-    --accent-foreground: 15, 23, 42; /* Slate 900 */
+    --accent: 147 197 253; /* Blue 300 */
+    --accent-foreground: 15 23 42; /* Slate 900 */
 
-    --destructive: 239, 68, 68; /* Red 500 */
-    --destructive-foreground: 241, 245, 249; /* Slate 100 */
+    --destructive: 239 68 68; /* Red 500 */
+    --destructive-foreground: 241 245 249; /* Slate 100 */
 
-    --border: 147, 197, 253; /* Blue 300 */
-    --input: 147, 197, 253; /* Blue 300 */
-    --ring: 241, 245, 249; /* Slate 100 */
+    --border: 147 197 253; /* Blue 300 */
+    --input: 147 197 253; /* Blue 300 */
+    --ring: 241 245 249; /* Slate 100 */
 
     --radius: 0.5rem;
+  }
 }
-}
+
 @layer base {
   * {
     @apply border-border;
@@ -67,6 +68,7 @@
     @apply bg-background text-foreground;
   }
 }
+
 /* Custom Scrollbar Styles */
 .custom-scrollbar::-webkit-scrollbar {
   width: 14px;
