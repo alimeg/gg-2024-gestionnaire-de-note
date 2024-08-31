@@ -58,3 +58,38 @@ export const editNoteAction = async (formData: FormData) => {
     return { errorMessage: getErrorMessage(error) };
   }
 };
+// implementation de la fonction de mise en archive
+
+export const archiveNoteAction = async (noteId: number) => {
+  try {
+    const user = await getUser();
+
+    await db
+      .update(notes)
+      .set({ isArchived: true })
+      .where(and(eq(notes.id, noteId), eq(notes.userId, user.id)));
+
+    revalidatePath("/archive"); 
+
+    return { errorMessage: null };
+  } catch (error) {
+    return { errorMessage: getErrorMessage(error) };
+  }
+};
+/*
+// pour desarchiver la note en appuyant sur l'icone d'archvage dans la note aqui se trouve dans la page /archive
+export const unarchiveNoteAction = async (noteId: number) => {
+  try {
+    const user = await getUser();
+
+    await db
+      .update(notes)
+      .set({ isArchived: false })
+      .where(and(eq(notes.id, noteId), eq(notes.userId, user.id)));
+
+    return { errorMessage: null };
+  } catch (error) {
+    return { errorMessage: getErrorMessage(error) };
+  }
+};
+*/

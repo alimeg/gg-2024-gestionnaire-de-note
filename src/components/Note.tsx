@@ -3,6 +3,7 @@
 import { Note as NoteType } from "@/db/schemas/notes";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
+import ArchiveButton from "./ArchiveButton";
 
 type Props = {
   note: NoteType;
@@ -15,12 +16,12 @@ function Note({ note }: Props) {
         <h2 className="text-muted-foreground text-lg font-semibold">
           {note.updatedAt.toISOString().slice(0, 10)}
         </h2>
-
-        <EditButton note={note} />
-
+        <div className="flex items-center gap-2">
+          <EditButton note={note} />
+          <ArchiveButton noteId={note.id} isArchived={true} />
+        </div>
         <DeleteButton noteId={note.id} />
-      </div>
-
+        </div>
       <p>{note.text}</p>
     </div>
   );

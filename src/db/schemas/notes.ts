@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, boolean } from "drizzle-orm/pg-core";
 
 export const notes = pgTable("notes", {
   id: serial("id").primaryKey(),
@@ -6,6 +6,7 @@ export const notes = pgTable("notes", {
   text: text("text").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  isArchived: boolean("is_archived").default(false), // New column for archive status
 });
 
 export type Note = typeof notes.$inferSelect;

@@ -1,11 +1,20 @@
+//"use client";
+
 import { getUser } from "@/lib/auth";
 import { Lilita_One } from "next/font/google";
 import UserButton from "./UserButton";
 import NewNoteButton from "./NewNoteButton";
+import HomeButton from "./HomeButton";
+import ArchiveIconButton from "./ArchiveIconButton";
 
 const lilita = Lilita_One({ weight: "400", subsets: ["latin"] });
 
-async function Header() {
+interface HeaderProps {
+  title: string;
+  isArchivePage?: boolean;
+}
+
+async function Header({ title, isArchivePage = false }: HeaderProps) {
   const user = await getUser();
 
   return (
@@ -13,10 +22,13 @@ async function Header() {
       <UserButton user={user} />
 
       <h1 className={`text-secondary text-4xl sm:text-5xl ${lilita.className}`}>
-        Fire Notes
+        {title} 
       </h1>
 
-      <NewNoteButton />
+      <div className="flex gap-2">
+        {isArchivePage ? <HomeButton /> : <ArchiveIconButton />}
+        <NewNoteButton />
+      </div>
     </div>
   );
 }
