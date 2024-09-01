@@ -9,7 +9,7 @@ export default async function Home() {
   const user = await getUser();
 
   
-  console.log("Authenticated User ID:", user.id);
+  //console.log("Authenticated User ID:", user.id);
 
   const _notes = await db
   .select()
@@ -20,7 +20,7 @@ export default async function Home() {
   )
   .orderBy(desc(notes.updatedAt));
 
-  console.log("Fetched Notes:", _notes);
+ // console.log("Fetched Notes:", _notes);
 
   // Filter notes to include archived ones
   const visibleNotes = _notes.filter(note => !note.isArchived);

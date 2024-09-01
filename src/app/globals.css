@@ -8,11 +8,11 @@
     --foreground: 20 20 20; /* Darker Gray */
     --card: 255 255 255; /* White */
     --card-foreground: 20 20 20; /* Darker Gray */
-    --popover: 255 255 255; /* White */
+    --popover: 224 231 255; /* Bleu Ciel Clair */
     --popover-foreground: 20 20 20; /* Darker Gray */
     --primary: 20 40 80; /* Darker Blue */
     --primary-foreground: 240 240 255; /* Light Off White */
-    --secondary: 190 200 250; /* Soft Light Gray */
+    --secondary: 170 180 250; /* Soft Light Gray */
     --secondary-foreground: 20 40 80; /* Darker Blue */
     --muted: 190 200 250; /* Soft Light Gray */
     --muted-foreground: 150 150 150; /* Medium Gray */

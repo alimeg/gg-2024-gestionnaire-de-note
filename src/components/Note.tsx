@@ -4,6 +4,7 @@ import { Note as NoteType } from "@/db/schemas/notes";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 import ArchiveButton from "./ArchiveButton";
+import ThemeToggle from "./ThemeToggle";
 
 type Props = {
   note: NoteType;
