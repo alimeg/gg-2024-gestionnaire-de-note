@@ -22,7 +22,7 @@ export default async function Home() {
 
   console.log("Fetched Notes:", _notes);
 
-  // Filter notes to exclude archived ones
+  // Filter notes to include archived ones
   const visibleNotes = _notes.filter(note => !note.isArchived);
 
   return (
