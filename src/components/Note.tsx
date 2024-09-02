@@ -5,8 +5,10 @@ import { Note as NoteType } from "@/db/schemas/notes";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 import ArchiveButton from "./ArchiveButton";
+import { HandleArchiveNote } from "@/lib/handleArchiveNote"
 import { archiveNoteAction, unarchiveNoteAction } from '@/actions/notes';
 import { toast } from 'react-hot-toast';
+import { HandleUnarchiveNote } from '@/lib/handleUnArchiveNote';
 
 type Props = {
   note: NoteType;
@@ -16,37 +18,15 @@ type Props = {
 function Note({ note, mode }: Props) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleArchiveNote = async () => {
-    startTransition(async () => {
-      const { errorMessage } = await archiveNoteAction(note.id);
-      if (!errorMessage) {
-        toast.success("Note archived successfully");
-      } else {
-        toast.error(errorMessage);
-      }
-    });
-  };
-
-  const handleUnarchiveNote = async () => {
-    startTransition(async () => {
-      const { errorMessage } = await unarchiveNoteAction(note.id);
-      if (!errorMessage) {
-        toast.success("Note unarchived successfully");
-      } else {
-        toast.error(errorMessage);
-      }
-    });
-  };
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.key === 'a' && isHovered) {
         if (mode === 'archive') {
-          handleArchiveNote();
+          HandleArchiveNote(note.id);
         } else if (mode === 'unarchive') {
-          handleUnarchiveNote();
+          HandleUnarchiveNote(note.id);
         }
-        console.log(`Hello, this is me: ${note.id}`);
+       // console.log(`Hello, this is me: ${note.id}`);
       }
     };
 
