@@ -71,7 +71,7 @@ function Note({ note, mode }: Props) {
           <EditButton note={note} />
           <ArchiveButton
             noteId={note.id}
-            isArchived={note.isArchived}
+            isArchived={note.isArchived ?? false} 
             mode={mode}
           />
         </div>
