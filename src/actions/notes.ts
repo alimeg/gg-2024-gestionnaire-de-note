@@ -58,7 +58,8 @@ export const editNoteAction = async (formData: FormData) => {
     return { errorMessage: getErrorMessage(error) };
   }
 };
-// implementation de la fonction de mise en archive
+
+// Archive action
 
 export const archiveNoteAction = async (noteId: number) => {
   try {
@@ -69,15 +70,15 @@ export const archiveNoteAction = async (noteId: number) => {
       .set({ isArchived: true })
       .where(and(eq(notes.id, noteId), eq(notes.userId, user.id)));
 
-    revalidatePath("/archive"); 
+    revalidatePath("/"); 
 
     return { errorMessage: null };
   } catch (error) {
     return { errorMessage: getErrorMessage(error) };
   }
 };
-/*
-// pour desarchiver la note en appuyant sur l'icone d'archvage dans la note aqui se trouve dans la page /archive
+
+// UnArchive action
 export const unarchiveNoteAction = async (noteId: number) => {
   try {
     const user = await getUser();
@@ -87,9 +88,10 @@ export const unarchiveNoteAction = async (noteId: number) => {
       .set({ isArchived: false })
       .where(and(eq(notes.id, noteId), eq(notes.userId, user.id)));
 
+    revalidatePath("/");
+
     return { errorMessage: null };
   } catch (error) {
     return { errorMessage: getErrorMessage(error) };
   }
 };
-*/
