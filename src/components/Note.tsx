@@ -1,14 +1,13 @@
-"use client";
 
-import { useState, useEffect, startTransition } from 'react';
+"use client"
+import { useState, useEffect } from 'react';
 import { Note as NoteType } from "@/db/schemas/notes";
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 import ArchiveButton from "./ArchiveButton";
-import { HandleArchiveNote } from "@/lib/handleArchiveNote"
-import { archiveNoteAction, unarchiveNoteAction } from '@/actions/notes';
-import { toast } from 'react-hot-toast';
-import { HandleUnarchiveNote } from '@/lib/handleUnArchiveNote';
+import { handleArchiveNote } from "@/lib/handleArchiveNote";
+import { handleUnarchiveNote } from '@/lib/handleUnArchiveNote';
+import { motion } from 'framer-motion';
 
 type Props = {
   note: NoteType;
@@ -17,28 +16,70 @@ type Props = {
 
 function Note({ note, mode }: Props) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isCtrlPressed, setIsCtrlPressed] = useState(false);
+  const [isAPressed, setIsAPressed] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.ctrlKey && event.key === 'a' && isHovered) {
-        if (mode === 'archive') {
-          HandleArchiveNote(note.id);
-        } else if (mode === 'unarchive') {
-          HandleUnarchiveNote(note.id);
-        }
-       // console.log(`Hello, this is me: ${note.id}`);
+      if (event.ctrlKey) {
+        setIsCtrlPressed(true);
+      }
+      if (event.key === 'a') {
+        setIsAPressed(true);
+      }
+    };
+
+    const handleKeyUp = (event: KeyboardEvent) => {
+      if (!event.ctrlKey) {
+        setIsCtrlPressed(false);
+      }
+      if (event.key === 'a') {
+        setIsAPressed(false);
       }
     };
 
     document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keyup', handleKeyUp);
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keyup', handleKeyUp);
     };
-  }, [isHovered, mode]);
+  }, []);
+
+  useEffect(() => {
+    if (isCtrlPressed && isAPressed && isHovered && (mode === 'archive' || mode === 'unarchive')) {
+      if (mode === 'archive') {
+        handleArchiveNote(note.id);
+      } else if (mode === 'unarchive') {
+        handleUnarchiveNote(note.id);
+      }
+    }
+  }, [isCtrlPressed, isAPressed, isHovered, mode, note.id]);
+
+  const animation = {
+    scale: isHovered ? (isCtrlPressed ? 0.8 : 1.2) : 1,
+    rotate: isHovered ? (isCtrlPressed ? [0, 15, -15, 15, 0] : [0, 10, -10, 10, 0]) : 0,
+    backgroundColor: isHovered ? (isCtrlPressed ? 'yellow' : 'rgb(var(--popout))') : 'rgb(var(--muted))',
+    color: isHovered && isCtrlPressed ? 'red' : 'inherit',
+    border: isHovered ? (isCtrlPressed ? '2px solid red' : '2px solid lightblue') : '1px solid gray', // Bordures
+    boxShadow: isHovered ? (isCtrlPressed ? '0 4px 8px rgba(255, 0, 0, 0.5)' : '0 4px 8px rgb(var(--popout))') : '0 2px 4px rgba(0, 0, 0, 0.2)'
+  };
 
   return (
-    <div
+    <motion.div
+      initial={{ backgroundColor: 'rgb(var(--muted))' }}
+      animate={animation}
+      transition={{ 
+        duration: 0.6, 
+        ease: "easeInOut",
+        times: [0, 0.25, 0.5, 0.75, 1] // Points de temps pour l'oscillation
+      }}
+      style={{ 
+        padding: '20px', 
+        borderRadius: '10px',
+        color: 'inherit' // Couleur de texte par défaut
+      }}
       className="custom-scrollbar bg-muted/80 h-96 w-full overflow-y-auto overflow-x-hidden whitespace-pre-wrap break-words rounded-lg p-6"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -51,14 +92,14 @@ function Note({ note, mode }: Props) {
           <EditButton note={note} />
           <ArchiveButton
             noteId={note.id}
-            isArchived={note.isArchived ?? false} 
+            isArchived={note.isArchived ?? false}
             mode={mode}
           />
         </div>
         <DeleteButton noteId={note.id} />
       </div>
       <p>{note.text}</p>
-    </div>
+    </motion.div>
   );
 }
 

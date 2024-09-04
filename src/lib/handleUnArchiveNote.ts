@@ -4,7 +4,7 @@ import { startTransition } from 'react';
 import toast from 'react-hot-toast';
 
  
-  export const HandleUnarchiveNote = async (noteId: number) => {
+  export const handleUnarchiveNote = async (noteId: number) => {
     startTransition(async () => {
       const { errorMessage } = await unarchiveNoteAction(noteId);
       if (!errorMessage) {
