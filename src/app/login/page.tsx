@@ -1,8 +1,9 @@
 "use client";
 
-import { createAccountAction, loginAction } from "@/actions/users";
+import { loginAction } from "@/actions/users";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -28,7 +29,14 @@ function LoginPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center px-4 pb-24">
-      <div className="bg-popover relative flex w-full max-w-sm flex-col items-center rounded-lg border p-8">
+     
+      <motion.div 
+      animate={{
+        scale: [1, 2, 2, 1, 1],
+        rotate: [0, 0, 270, 270, 0],
+        borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+      }}
+      className="bg-popover relative flex w-full max-w-sm flex-col items-center rounded-lg border p-8">
         <h1
           className={`mb-8 text-2xl font-semibold ${isPending && "opacity-0"}`}
         >
@@ -72,7 +80,7 @@ function LoginPage() {
             </Link>
           </p>
         </form>
-      </div>
+      </motion.div>
     </main>
   );
 }

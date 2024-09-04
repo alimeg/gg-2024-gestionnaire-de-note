@@ -29,6 +29,13 @@
       "when": 1725470644276,
       "tag": "0003_far_mongoose",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1725476039319,
+      "tag": "0004_lonely_network",
+      "breakpoints": true
     }
   ]
 }

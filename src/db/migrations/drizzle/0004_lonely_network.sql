@@ -1,0 +1,1 @@
+ALTER TABLE "notes" ADD COLUMN "profile_picture_url" text;

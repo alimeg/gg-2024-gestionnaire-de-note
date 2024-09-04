@@ -96,27 +96,4 @@ export const unarchiveNoteAction = async (noteId: number) => {
   }
 };
 
-/*/ theme action
-export const setThemeAction = async (formData: FormData) => {
-  try {
-    const user = await getUser();
-    const theme = formData.get("theme") as string;
 
-    // Validate theme value
-    if (!['dark', 'light'].includes(theme)) {
-      throw new Error('Invalid theme value');
-    }
-
-    // Update the theme for the user in the notes table
-    await db
-      .update(notes)
-      .set({ theme })
-      .where(eq(notes.userId, user.id));
-
-    revalidatePath("/");
-
-    return { errorMessage: null };
-  } catch (error) {
-    return { errorMessage: getErrorMessage(error) };
-  }
-};*/

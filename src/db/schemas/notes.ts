@@ -7,7 +7,7 @@ export const notes = pgTable("notes", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
   isArchived: boolean("is_archived").default(false),
-
+  profilePictureUrl: text("profile_picture_url"),
 });
 
 export type Note = typeof notes.$inferSelect;

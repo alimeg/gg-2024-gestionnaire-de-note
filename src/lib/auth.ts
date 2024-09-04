@@ -1,3 +1,4 @@
+
 import { cookies } from "next/headers";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { redirect } from "next/navigation";
@@ -34,5 +35,7 @@ export const getSupabaseAuth = () => {
       },
     },
   );
+
   return supabaseClient.auth;
+
 };
