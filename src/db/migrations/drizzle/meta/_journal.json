@@ -15,6 +15,20 @@
       "when": 1725111463865,
       "tag": "0001_nosy_overlord",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1725460494637,
+      "tag": "0002_cheerful_mattie_franklin",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1725470644276,
+      "tag": "0003_far_mongoose",
+      "breakpoints": true
     }
   ]
 }

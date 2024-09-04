@@ -18,13 +18,13 @@
     --muted-foreground: 150 150 150; /* Medium Gray */
     --accent: 190 200 250; /* Soft Light Gray */
     --accent-foreground: 20 40 80; /* Darker Blue */
-    --destructive: 255 1 1; /* Darker Bright Red */
+    --destructive: 255 0 0; /* Darker Bright Red */
     --destructive-foreground: 240 240 255; /* Light Off White */
     --border: 160 190 250; /* Soft Light Blue */
     --input: 160 190 250; /* Soft Light Blue */
     --ring: 240 240 255; /* Light Off White */
     --radius: 0.5rem;
-    --popout: 222 180 150 ; /* More subdued blue shadow */
+    --popout: 0, 255, 0 ; 
   }
 
   /* Dark Mode Variables */
@@ -50,7 +50,7 @@
     --accent: 147 197 253; /* Blue 300 */
     --accent-foreground: 15 23 42; /* Slate 900 */
 
-    --destructive: 239 68 68; /* Red 500 */
+    --destructive: 255 0 0; /* Red 500 */
     --destructive-foreground: 241 245 249; /* Slate 100 */
 
     --border: 147 197 253; /* Blue 300 */
@@ -58,7 +58,7 @@
     --ring: 241 245 249; /* Slate 100 */
 
     --radius: 0.5rem;
-    --popout: 222 180 150 ;
+    --popout: 0, 128, 128 ;
   }
 }
 

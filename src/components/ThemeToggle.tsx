@@ -2,7 +2,7 @@
 
 import { useTheme } from "@/components/ThemeProvider";
 import { Sun, Moon } from "lucide-react";
-import { cn } from "@/lib/utils"; // Ensure this is correctly imported if needed
+import { cn } from "@/lib/utils"; 
 
 
 const ThemeToggle = () => {

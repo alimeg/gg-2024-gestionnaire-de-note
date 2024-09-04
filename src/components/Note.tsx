@@ -51,6 +51,7 @@ function Note({ note, mode }: Props) {
     if (isCtrlPressed && isAPressed && isHovered && (mode === 'archive' || mode === 'unarchive')) {
       if (mode === 'archive') {
         handleArchiveNote(note.id);
+        
       } else if (mode === 'unarchive') {
         handleUnarchiveNote(note.id);
       }
