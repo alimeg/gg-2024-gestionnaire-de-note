@@ -34,7 +34,7 @@ function LoginPage() {
       animate={{
         scale: [1, 2, 2, 1, 1],
         rotate: [0, 0, 270, 270, 0],
-        borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+       // borderRadius: ["20%", "20%", "50%", "50%", "20%"],
       }}
       className="bg-popover relative flex w-full max-w-sm flex-col items-center rounded-lg border p-8">
         <h1
