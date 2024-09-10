@@ -11,7 +11,7 @@ import { motion } from 'framer-motion';
 
 type Props = {
   note: NoteType;
-  mode: 'archive' | 'unarchive'; // Mode should be 'archive' or 'unarchive'
+  mode: 'archive' | 'unarchive'; 
 };
 
 function Note({ note, mode }: Props) {

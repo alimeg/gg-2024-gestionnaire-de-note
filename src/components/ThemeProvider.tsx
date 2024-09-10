@@ -8,8 +8,8 @@ const ThemeContext = createContext({
 });
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false); // Default to light mode initially
-  const [isThemeLoaded, setIsThemeLoaded] = useState<boolean>(false); // State to track theme loading
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false); 
+  const [isThemeLoaded, setIsThemeLoaded] = useState<boolean>(false); 
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -19,7 +19,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
       setIsDarkMode(true); 
     }
     setIsThemeLoaded(true); // Mark theme as loaded: important pour ne pas ecraser la valeur set par le user vers le default
-  }, []); // Run only on mount
+  }, []);
 
   useEffect(() => {
     if (isThemeLoaded) {
